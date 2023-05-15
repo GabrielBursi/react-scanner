@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import Quagga, { QuaggaJSResultCallbackFunction } from "@ericblade/quagga2";
-import { Video } from "../styles"
+import { Container, ScanMarker, Video } from "../styles"
 import { ValidateIsbn } from "../helpers";
+import scanMarker from '../images/scan-marker.png'
 
 export const Scanner = () => {
 
@@ -58,6 +59,20 @@ export const Scanner = () => {
     }, []);
 
     return (
-        <Video id='video' />
+        <>
+            <Video id='video' />
+            <Container>
+                <ScanMarker>
+                    <img
+                        src={scanMarker}
+                        alt="marca para leitura de código"
+                        width="260"
+                        height="260"
+                    />
+                    <p className="label">Aponte para o código de barras do livro</p>
+                </ScanMarker>
+                {/* img de logo */}
+            </Container>
+        </>
     )
 }

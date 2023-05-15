@@ -1,3 +1,3 @@
 
 export * from './Container'
-export * from './HomeStyle'
+export * from './Scanner'
