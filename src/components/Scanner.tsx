@@ -4,7 +4,11 @@ import { Container, ScanMarker, Video } from "../styles"
 import { ValidateIsbn } from "../helpers";
 import scanMarker from '../images/scan-marker.png'
 
-export const Scanner = () => {
+interface ScannerProps {
+    onScan: (v: string) => void;
+}
+
+export const Scanner = ({onScan}: ScannerProps) => {
 
     const onDetected: QuaggaJSResultCallbackFunction = result => {
         Quagga.offDetected(onDetected)
@@ -19,6 +23,7 @@ export const Scanner = () => {
         const valid = ValidateIsbn(isbn)
 
         if (valid) {
+            onScan(isbn)
             alert(isbn)
             return
         }
@@ -72,6 +77,13 @@ export const Scanner = () => {
                     <p className="label">Aponte para o código de barras do livro</p>
                 </ScanMarker>
                 {/* img de logo */}
+                <img
+                    className="logo"
+                    src=""
+                    alt="logo"
+                    width="137"
+                    height="69"
+                />
             </Container>
         </>
     )
