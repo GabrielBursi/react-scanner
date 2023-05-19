@@ -6,9 +6,10 @@ import scanMarker from '../images/scan-marker.png'
 
 interface ScannerProps {
     onScan: (v: string) => void;
+    setIsValid: (v: boolean) => void;
 }
 
-export const Scanner = ({onScan}: ScannerProps) => {
+export const Scanner = ({onScan, setIsValid}: ScannerProps) => {
 
     const onDetected: QuaggaJSResultCallbackFunction = result => {
         Quagga.offDetected(onDetected)
@@ -17,6 +18,7 @@ export const Scanner = ({onScan}: ScannerProps) => {
 
         if (!isbn) {
             alert('isbn nulo')
+            setIsValid(false)
             return
         }
 
@@ -24,11 +26,12 @@ export const Scanner = ({onScan}: ScannerProps) => {
 
         if (valid) {
             onScan(isbn)
-            alert(isbn)
+            setIsValid(true)
             return
         }
 
         alert('isbn não é valido')
+        setIsValid(false)
         Quagga.onDetected(onDetected)
     }
 

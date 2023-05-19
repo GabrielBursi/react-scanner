@@ -32,18 +32,18 @@ export const Result = ({ isbn }: ResultProps) => {
             {book &&
                 <Link to={`/book/details/${isbn}`}>
                     <Wrapper>
-                        <Cover src={book?.coverURL} />
+                        <Cover src={book.coverURL} />
                         <Info>
                             <h4 className="name">
-                                {book?.name}
+                                {book.name}
                             </h4>
                             <div className="book-rating">
-                                <StarRatings rating={book?.rating} starRatedColor="#f1c40f" starDimension="18" starSpacing="0" />{' '}(4.0)
+                                <StarRatings rating={book.rating} starRatedColor="#f1c40f" starDimension="18" starSpacing="0" />{' '}(4.0)
                             </div>
                             <div className="price">
-                                <span className="discount">{book?.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</span>
+                                <span className="discount">{book.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</span>
                                 por
-                                <span>{book?.promotionalPrice.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</span>
+                                <span>{book.promotionalPrice.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</span>
                             </div>
                         </Info>
                         <ActionsButtons>
